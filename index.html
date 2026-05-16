@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawHaven — Find Your Forever Friend</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- BACKGROUND SLIDESHOW -->
+  <!-- Images rotate on page focus (tab switching) and every 8s while active -->
+  <div class="bg-slideshow" id="bg-slideshow" aria-hidden="true">
+    <div class="bg-slide active" id="bg-slide-0"></div>
+    <div class="bg-slide"        id="bg-slide-1"></div>
+    <div class="bg-slide"        id="bg-slide-2"></div>
+  </div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-paw">🐾</span>
+        <span class="logo-text">PawHaven</span>
+      </div>
+      <nav class="main-nav">
+        <a href="#search-section" class="nav-link">Find a Pet</a>
+        <a href="#insurance-section" class="nav-link">Insurance</a>
+        <a href="#about-section" class="nav-link">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Every paw deserves a home</p>
+      <h1 class="hero-title">Find Your<br /><em>Forever Friend</em></h1>
+      <p class="hero-subtitle">Search thousands of dogs and cats waiting for their perfect family. Filter by location, breed, and more.</p>
+      <a href="#search-section" class="hero-cta">Start Searching</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrapper">
+        <img id="hero-dog-img" src="" alt="Adorable adoptable dog" />
+        <div class="hero-badge">🏠 Ready to adopt</div>
+      </div>
+      <div class="floating-stat stat-1">
+        <span class="stat-number">10K+</span>
+        <span class="stat-label">pets rehomed</span>
+      </div>
+      <div class="floating-stat stat-2">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">happy families</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH SECTION -->
+  <section class="search-section" id="search-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-eyebrow">Endpoint 1 — Pet Search</p>
+        <h2 class="section-title">Search for Pets Near You</h2>
+      </div>
+
+      <form class="search-form" id="search-form" onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="zip-input">ZIP Code</label>
+            <input type="text" id="zip-input" placeholder="e.g. 90210" maxlength="10" />
+          </div>
+          <div class="form-group">
+            <label for="city-input">City</label>
+            <input type="text" id="city-input" placeholder="e.g. Los Angeles" />
+          </div>
+          <div class="form-group">
+            <label for="state-input">State</label>
+            <input type="text" id="state-input" placeholder="e.g. CA" maxlength="2" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="radius-input">Radius (miles)</label>
+            <select id="radius-input">
+              <option value="10">10 miles</option>
+              <option value="25" selected>25 miles</option>
+              <option value="50">50 miles</option>
+              <option value="100">100 miles</option>
+              <option value="any">Any distance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="breed-input">Breed</label>
+            <input type="text" id="breed-input" placeholder="e.g. Labrador, Poodle" />
+          </div>
+          <div class="form-group">
+            <label for="species-input">Species</label>
+            <select id="species-input">
+              <option value="any">Any</option>
+              <option value="dog">Dogs</option>
+              <option value="cat">Cats</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="search-btn" id="search-btn" onclick="searchPets()">
+          <span class="btn-icon">🔍</span> Search Pets
+        </button>
+      </form>
+
+      <!-- Error / Loading States -->
+      <div id="search-error" class="error-banner" style="display:none;"></div>
+      <div id="search-loading" class="loading-state" style="display:none;">
+        <div class="spinner"></div>
+        <p>Finding adorable pets near you…</p>
+      </div>
+
+      <!-- Results Grid -->
+      <div id="results-grid" class="results-grid" style="display:none;"></div>
+      <div id="results-count" class="results-count" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- INSURANCE SECTION -->
+  <section class="insurance-section" id="insurance-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-eyebrow">Endpoint 2 — Pet Insurance</p>
+        <h2 class="section-title">Protect Your New Family Member</h2>
+        <p class="section-desc">Unexpected vet bills can be stressful. Browse affordable insurance plans curated for new pet owners.</p>
+      </div>
+
+      <div id="insurance-loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading insurance plans…</p>
+      </div>
+
+      <div id="insurance-grid" class="insurance-grid" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about-section">
+    <div class="section-inner about-inner">
+      <div class="about-text">
+        <p class="section-eyebrow">Our Mission</p>
+        <h2 class="section-title">Every Pet Deserves Love</h2>
+        <p>PawHaven connects rescued animals with loving families. We partner with shelters across the country to bring you real-time availability on pets that need a home.</p>
+        <p>We believe adoption should be transparent — that's why every listing includes health history, rescue background, and full care details. No surprises, just love.</p>
+      </div>
+      <div class="about-stats">
+        <div class="about-stat">
+          <span class="big-num">12,400</span>
+          <span class="stat-desc">Pets adopted this year</span>
+        </div>
+        <div class="about-stat">
+          <span class="big-num">340+</span>
+          <span class="stat-desc">Partner shelters</span>
+        </div>
+        <div class="about-stat">
+          <span class="big-num">50</span>
+          <span class="stat-desc">States covered</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logo">🐾 PawHaven</div>
+      <p class="footer-note">Pet data powered by <a href="https://thedogapi.com" target="_blank">TheDogAPI</a> &amp; <a href="https://thecatapi.com" target="_blank">TheCatAPI</a>. Adoption listings are illustrative examples for educational purposes.</p>
+      <p class="footer-copy">&copy; 2025 PawHaven. Built with ❤️ for animals everywhere.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
