@@ -472,7 +472,7 @@ const INSURANCE_PLANS = [
       'Emergency stabilization'
     ],
     copay: 'No deductible. 20% copay per claim. $5,000 annual max.',
-    quoteUrl: 'https://www.nationsafepets.com/'
+    quoteUrl: 'https://www.spotpetins.com/'
   },
   {
     name: 'AdoptEase First Year',
