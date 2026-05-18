@@ -139,11 +139,11 @@ function buildPet(breed, imageUrl, species, filterLocation) {
 
   const shelter = randomItem(SHELTERS);
 
-  // Link to a real Petfinder search for this breed — avoids 404 errors from fake pet IDs
-  const breedSlug = breed.name.toLowerCase().replace(/\s+/g, '-');
+  // Link to Petfinder search results filtered by breed — always works
+  const breedEncoded = encodeURIComponent(breed.name);
   const adoptionUrl = species === 'cat'
-    ? `https://www.petfinder.com/cat-breeds/${breedSlug}/`
-    : `https://www.petfinder.com/dog-breeds/${breedSlug}/`;
+    ? `https://www.petfinder.com/search/cats-for-adoption/?breed%5B0%5D=${breedEncoded}`
+    : `https://www.petfinder.com/search/dogs-for-adoption/?breed%5B0%5D=${breedEncoded}`;
 
   return {
     id: Math.random().toString(36).slice(2),
