@@ -401,7 +401,7 @@ const INSURANCE_PLANS = [
       'Prescription medications (accident-related)'
     ],
     copay: '$100 annual deductible; 10% copay after deductible.',
-    quoteUrl: 'https://www.petinsurancereview.com/'
+    quoteUrl: 'https://www.embracepetinsurance.com/'
   },
   {
     name: 'FurFirst Complete',
@@ -419,7 +419,7 @@ const INSURANCE_PLANS = [
       'Specialist & emergency care'
     ],
     copay: '$250 annual deductible; 20% copay. No copay for preventive care.',
-    quoteUrl: 'https://www.petinsurancereview.com/'
+    quoteUrl: 'https://www.trupanion.com/'
   },
   {
     name: 'TailCare Wellness+',
@@ -437,7 +437,7 @@ const INSURANCE_PLANS = [
       'Microchipping'
     ],
     copay: 'No deductible. $15 copay per wellness visit.',
-    quoteUrl: 'https://www.petinsurancereview.com/'
+    quoteUrl: 'https://www.petsbest.com/'
   },
   {
     name: 'LifePaws Premium',
@@ -456,7 +456,7 @@ const INSURANCE_PLANS = [
       'End-of-life & cremation allowance'
     ],
     copay: '$150 annual deductible; 10% copay. Unlimited annual max.',
-    quoteUrl: 'https://www.petinsurancereview.com/'
+    quoteUrl: 'https://www.healthypawspetinsurance.com/'
   },
   {
     name: 'QuickPaw Accident-Only',
@@ -472,7 +472,7 @@ const INSURANCE_PLANS = [
       'Emergency stabilization'
     ],
     copay: 'No deductible. 20% copay per claim. $5,000 annual max.',
-    quoteUrl: 'https://www.petinsurancereview.com/'
+    quoteUrl: 'https://www.nationsafepets.com/'
   },
   {
     name: 'AdoptEase First Year',
@@ -489,7 +489,7 @@ const INSURANCE_PLANS = [
       'Microchip registration'
     ],
     copay: 'No copay. Fixed coverage — no claims process for included items.',
-    quoteUrl: 'https://www.petinsurancereview.com/'
+    quoteUrl: 'https://www.aspcapetinsurance.com/'
   }
 ];
 
